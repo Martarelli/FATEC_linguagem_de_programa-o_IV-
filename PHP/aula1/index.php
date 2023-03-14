@@ -9,7 +9,7 @@
 <body>
 
     <?php 
-        echo "hello world";
+        echo "hoje é dia ". date('d,M,Y');
     ?>
 
 </body>
