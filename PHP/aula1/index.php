@@ -7,6 +7,10 @@
     <title>Exemplo 1</title>
 </head>
 <body>
-    
+
+    <?php 
+        echo "hello world";
+    ?>
+
 </body>
 </html>
