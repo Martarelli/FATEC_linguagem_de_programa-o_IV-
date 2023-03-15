@@ -10,6 +10,12 @@
 
     <?php 
         echo "hoje é dia ". date('d,M,Y');
+
+        function teste(){
+            echo "<h1> Função teste </h1>";
+        }
+
+        teste();
     ?>
 
 </body>
