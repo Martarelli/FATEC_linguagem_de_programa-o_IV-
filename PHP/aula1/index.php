@@ -11,7 +11,8 @@
     <?php 
         echo "hoje é dia ". date('d,M,Y');
 
-        function teste(){
+        function teste()
+        {
             echo "<h1> Função teste </h1>";
         }
 
