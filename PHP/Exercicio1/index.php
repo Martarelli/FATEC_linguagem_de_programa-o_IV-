@@ -9,6 +9,36 @@
     <title>Exercicio 1</title>
 </head>
 <body>
-    
+<div class="p-4 mb-4 bg-light">
+  <h1 class="display-5">Cálculo Média</h1>
+  <hr class="my-3">
+  <p class="lead">Esse exemplo calcula a média aritmética de duas provas.</p>
+</div>
+
+<div class="container">
+  <form method="GET">
+    <div class="form-group col-md-2">
+      <label for="p1">P1:</label>
+      <input type="text" class="form-control" id="p1" name="p1" required>
+    </div>
+    <br />
+    <div class="form-group col-md-2">
+      <label for="p2">P2:</label>
+      <input type="text" class="form-control" id="p2" name="p2" required>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary mb-2" name="enviar">Enviar</button>
+    <a href="exercicio01.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
+  </form>
+  <?php 
+    if (!is_null($flag_msg)) {
+      if ($flag_msg) {
+        echo "<div class='alert alert-success' role='alert'>$msg</div>"; 
+      }else{
+        echo "<div class='alert alert-warning' role='alert'>$msg</div>"; 
+      }
+    }
+  ?>
+</div>
 </body>
 </html>
