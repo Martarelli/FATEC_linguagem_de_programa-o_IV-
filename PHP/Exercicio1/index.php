@@ -1,3 +1,32 @@
+<?php
+
+$flag_msg = null;
+$msg = "";
+
+if (isset($_GET['enviar'])) {
+  
+  $p1 = $_GET["p1"];
+  $p2 = $_GET["p2"];
+
+  if (!empty($p1) && !empty($p2) && 
+      is_numeric($p1) && is_numeric($p2) &&
+      $p1 >=0 && $p2 >= 0) {
+  
+    $nota = ($p1 + $p2) / 2;
+
+    $flag_msg = true; // Sucesso 
+    $msg = "Cálculo efetuado com sucesso:<br />P1 = "; 
+    $msg .= number_format($p1,2);
+    $msg .= "<br />P2 = "; 
+    $msg .= number_format($p2,2);
+    $msg .= "<br />Média Final: ";
+    $msg .= number_format($nota,2);
+  }else{  
+    $flag_msg = false; //Erro 
+    $msg = "Dados incorretos, preencha o formulário corretamente!";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt_BR">
 <head>
