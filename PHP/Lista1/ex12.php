@@ -19,29 +19,13 @@ if (isset($_GET['enviar'])) {
     if ($media >= 7) {
       $flag_msg = true; // Sucesso 
       $msg = "**************** APROVADO ****************<br />Aluno = "; 
-      $msg .= $nome;
-      $msg .= "<br />Nota 1 = "; 
-      $msg .= number_format($p1,2);
-      $msg .= "<br />Nota 2 = ";
-      $msg .= number_format($p2,2);
-      $msg .= "<br />Nota 3 = ";
-      $msg .= number_format($p3,2);
-      $msg .= "<br />Nota 4 = ";
-      $msg .= number_format($p4,2);    
+      $msg .= $nome; 
       $msg .= "<br />MEDIA = ";
       $msg .= number_format($media,2);
     } else {
       $flag_msg = true;
       $msg = "**************** REPROVADO ****************<br />Aluno = "; 
-      $msg .= $nome;
-      $msg .= "<br />Nota 1 = "; 
-      $msg .= number_format($p1,2);
-      $msg .= "<br />Nota 2 = ";
-      $msg .= number_format($p2,2);
-      $msg .= "<br />Nota 3 = ";
-      $msg .= number_format($p3,2);
-      $msg .= "<br />Nota 4 = ";
-      $msg .= number_format($p4,2);    
+      $msg .= $nome;    
       $msg .= "<br />MEDIA = ";
       $msg .= number_format($media,2);
     }
