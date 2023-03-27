@@ -20,6 +20,17 @@ if (isset($_GET['enviar'])) {
     $msg .= number_format($altura,2);
     $msg .= "<br />IMC: ";
     $msg .= number_format($imc,2);
+    if ($imc < 18.5) {
+      $msg .= "<br />MAGREZA";
+    } else if ($imc >= 18.5 && $imc <= 24.9){
+      $msg .= "<br />NORMAL";
+    } else if ($imc >= 25 && $imc <= 29.9){
+      $msg .= "<br />SOBREPESO";
+    } else if ($imc >= 30 && $imc <= 29.9){
+      $msg .= "<br />OBESIDADE";
+    } else {
+      $msg .= "<br />OBESIDADE GRAVE";
+    }
   }else{  
     $flag_msg = false; //Erro 
     $msg = "Dados incorretos, preencha o formulário corretamente!";
