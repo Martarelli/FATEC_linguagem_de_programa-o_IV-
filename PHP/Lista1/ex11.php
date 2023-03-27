@@ -53,7 +53,7 @@ if (isset($_GET['enviar'])) {
     </div>
     <br />
     <button type="submit" class="btn btn-primary mb-2" name="enviar">Enviar</button>
-    <a href="ex12.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
+    <a href="ex11.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
   </form>
   <?php 
     if (!is_null($flag_msg)) {
