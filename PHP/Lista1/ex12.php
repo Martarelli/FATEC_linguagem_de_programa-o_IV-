@@ -53,9 +53,7 @@ if (isset($_GET['enviar'])) {
     $msg = "Dados incorretos, preencha o formulário corretamente!";
   }
 }
-
- ?>
-
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -115,18 +113,21 @@ if (isset($_GET['enviar'])) {
         <a href="ex12.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
       </form>';
     }
-?>
-  <?php 
+
     if (!is_null($flag_msg)) {
-      if ($flag_msg === 0) {
+      if ($flag_msg === 0) 
+      {
        echo "<div class='alert alert-danger' role='alert'>$msg</div>"; 
-     } else if ($flag_msg === 1) {
+      } else if ($flag_msg === 1) 
+      {
        echo "<div class='alert alert-success' role='alert'>$msg</div>"; 
-     } else if ($flag_msg === 2) {
+      } else if ($flag_msg === 2) 
+      {
        echo "<div class='alert alert-warning' role='alert'>$msg</div>"; 
-     } else if ($flag_msg === 3) {
+      } else if ($flag_msg === 3) 
+      {
        echo "<div class='alert alert-dark' role='alert'>$msg</div>"; 
-     }
+      }
     }
 ?>
 </div>
