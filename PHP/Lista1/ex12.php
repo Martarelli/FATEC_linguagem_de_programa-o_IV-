@@ -1,6 +1,7 @@
 <?php
 $flag_msg = null;
 $msg = "";
+$exame = false;
 
 if (isset($_GET['enviar'])) {
   
@@ -17,24 +18,43 @@ if (isset($_GET['enviar'])) {
     $media = ($p1+$p2+$p3+$p4)/4;
 
     if ($media >= 7) {
-      $flag_msg = true; // Sucesso 
+      $flag_msg = 1; // Sucesso 
       $msg = "**************** APROVADO ****************<br />Aluno = "; 
       $msg .= $nome; 
       $msg .= "<br />MEDIA = ";
       $msg .= number_format($media,2);
-    } else {
-      $flag_msg = true;
-      $msg = "**************** REPROVADO ****************<br />Aluno = "; 
-      $msg .= $nome;    
-      $msg .= "<br />MEDIA = ";
-      $msg .= number_format($media,2);
+    } else { 
+        $exame = true;
+        $flag_msg = 2;
+        $msg = "**************** ENVIAR NOTA DO EXAME! ****************<br />Aluno = "; 
+        $msg .= $nome;    
+        $msg .= "<br />MEDIA ANTES EXAME: ";
+        $msg .= number_format($media,2);
+        if (isset($_GET['enviarExame'])) {
+          $exame = $_GET["exame"];
+          $media = ($media + $exame)/2;
+          if ($media >= 7) {
+            $flag_msg = 1;
+            $msg = "**************** APROVADO ****************<br />Aluno = "; 
+            $msg .= $nome; 
+            $msg .= "<br />MEDIA = ";
+            $msg .= number_format($media,2);
+          } else { 
+            $flag_msg = 3;
+            $msg = "**************** REPROVADO ****************<br />Aluno = "; 
+            $msg .= $nome; 
+            $msg .= "<br />MEDIA = ";
+            $msg .= number_format($media,2);
+          }
+        }
     }
-  }else{  
-    $flag_msg = false; //Erro 
+  } else {  
+    $flag_msg = 0;
     $msg = "Dados incorretos, preencha o formulário corretamente!";
   }
 }
-?>
+
+ ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -84,12 +104,29 @@ if (isset($_GET['enviar'])) {
     <a href="ex12.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
   </form>
   <?php 
+    if($exame){
+      echo '<form method="GET">
+        <div class="form-group col-md-2">
+          <label for="exame">Exame:</label>
+          <input type="text" class="form-control" id="exame" name="exame" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary mb-2" name="enviarExame">Enviar</button>
+        <a href="ex12.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
+      </form>';
+    }
+?>
+  <?php 
     if (!is_null($flag_msg)) {
-      if ($flag_msg) {
-        echo "<div class='alert alert-success' role='alert'>$msg</div>"; 
-      }else{
-        echo "<div class='alert alert-warning' role='alert'>$msg</div>"; 
-      }
+      if ($flag_msg === 0) {
+       echo "<div class='alert alert-danger' role='alert'>$msg</div>"; 
+     } else if ($flag_msg === 1) {
+       echo "<div class='alert alert-success' role='alert'>$msg</div>"; 
+     } else if ($flag_msg === 2) {
+       echo "<div class='alert alert-warning' role='alert'>$msg</div>"; 
+     } else if ($flag_msg === 3) {
+       echo "<div class='alert alert-dark' role='alert'>$msg</div>"; 
+     }
     }
 ?>
 </div>
