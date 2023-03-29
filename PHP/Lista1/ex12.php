@@ -2,7 +2,11 @@
 $flag_msg = null;
 $msg = "";
 $exame = false;
-
+$nome = "";
+$p1 = "";
+$p2 = "";
+$p3 = "";
+$p4 = "";
 if (isset($_GET['enviar'])) {
   
   $nome = $_GET["nome"];
@@ -30,10 +34,10 @@ if (isset($_GET['enviar'])) {
         $msg .= $nome;    
         $msg .= "<br />MEDIA ANTES EXAME: ";
         $msg .= number_format($media,2);
-        if (isset($_GET['enviarExame'])) {
-          $exame = $_GET["exame"];
-          $media = ($media + $exame)/2;
-          if ($media >= 7) {
+        if (isset($_GET["exame"])) {
+          $notaExame = $_GET["exame"];
+          $media = ($media + $notaExame)/2;
+          if ($media >= 5) {
             $flag_msg = 1;
             $msg = "**************** APROVADO ****************<br />Aluno = "; 
             $msg .= $nome; 
@@ -75,44 +79,43 @@ if (isset($_GET['enviar'])) {
   <form method="GET">
     <div class="form-group col-md-2">
       <label for="nome">Nome:</label>
-      <input type="text" class="form-control" id="nome" name="nome" required>
+      <input type="text" class="form-control" id="nome" value="<?= $nome ?>" name="nome" required>
     </div>
     <br />
     <div class="form-group col-md-2">
       <label for="p1">P1:</label>
-      <input type="text" class="form-control" id="p1" name="p1" required>
+      <input type="text" class="form-control" id="p1" value="<?php echo $p1; ?>" name="p1" required>
     </div>
     <br />
     <div class="form-group col-md-2">
       <label for="p2">P2:</label>
-      <input type="text" class="form-control" id="p2" name="p2" required>
+      <input type="text" class="form-control" id="p2" value="<?php echo $p2; ?>" name="p2" required>
     </div>
     <br />
     <div class="form-group col-md-2">
       <label for="p3">P3:</label>
-      <input type="text" class="form-control" id="p3" name="p3" required>
+      <input type="text" class="form-control" id="p3" value="<?php echo $p3; ?>" name="p3" required>
     </div>
     <br />
     <div class="form-group col-md-2">
       <label for="p4">P4:</label>
-      <input type="text" class="form-control" id="p4" name="p4" required>
+      <input type="text" class="form-control" id="p4" value="<?php echo $p4; ?>" name="p4" required>
     </div>
     <br />
+    <?php
+
+    if($exame){
+      echo '<div class="form-group col-md-2">
+          <label for="exame">Exame:</label>
+          <input type="text" class="form-control" id="exame" name="exame" required>
+        </div>
+        <br />';
+    } 
+    ?>
     <button type="submit" class="btn btn-primary mb-2" name="enviar">Enviar</button>
     <a href="ex12.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
   </form>
   <?php 
-    if($exame){
-      echo '<form method="GET">
-        <div class="form-group col-md-2">
-          <label for="exame">Exame:</label>
-          <input type="text" class="form-control" id="exame" name="exame" required>
-        </div>
-        <br />
-        <button type="submit" class="btn btn-primary mb-2" name="enviarExame">Enviar</button>
-        <a href="ex12.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
-      </form>';
-    }
 
     if (!is_null($flag_msg)) {
       if ($flag_msg === 0) 
