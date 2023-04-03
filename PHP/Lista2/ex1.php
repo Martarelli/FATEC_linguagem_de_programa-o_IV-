@@ -1,31 +1,14 @@
 <?php
-$flag_msg = null;
+$flag_msg = true;
 $msg = "";
-
-if (isset($_GET['enviar'])) {
-  
-  $pagamento = $_GET["pagamento"];
-  $produto = $_GET["produto"];
-
-  if (!empty($pagamento) && !empty($produto) && 
-      is_numeric($pagamento) && is_numeric($produto) &&
-      $pagamento >=0 && $produto >= 0) {
-  
-    $troco = $pagamento - $produto;
-  
-    $flag_msg = true; // Sucesso 
-    if ($troco >= 0) {
-        $msg = "Cálculo efetuado com sucesso:<br />Troco = R$"; 
-        $msg .= number_format($troco, 2);
-    } else {
-        $msg = "Dinheiro Insuficiente....."; 
-    }
-    
-  }else{  
-    $flag_msg = false; //Erro 
-    $msg = "Dados incorretos, preencha o formulário corretamente!";
-  }
+$a = 50;
+while ($a <= 200) {
+  $quad = $a ** 2;
+  $msg. "</br>";
+  $msg. number_format($quad, 2);
+  $a++;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +23,7 @@ if (isset($_GET['enviar'])) {
 </head>
 <body>
 <div class="p-4 mb-4 bg-light">
-  <h1 class="display-5">Troco</h1>
+  <h1 class="display-5">xibe o quadrado de 50 a 200</h1>
   <hr class="my-3">
   <p class="lead">Esse exemplo calcula o troco na compra de um produto.</p>
 </div>
