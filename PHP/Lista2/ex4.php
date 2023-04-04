@@ -2,20 +2,14 @@
 $flag_msg = true;
 $msg = "";
 
-for ($i=1; $i <= 25 ; $i++) { 
-  if ($i === 1) {
-    $fibAnt = 0;
-    $fibAnt2 = 1;
-    $fibAtu = $fibAnt + $fibAnt2;
-    $msg .= $fibAnt . " " . $fibAtu . " 1";
-  } else {
-    $fibAnt = $fibAnt2;
-    $fibAnt2 = $fibAtu;
-    $fibAtu = $fibAnt + $fibAnt2;
-    $msg .= " ". $fibAtu;
-
+for ($i=1; $i <= 100 ; $i++) { 
+  $msg .= "TABUADA DO " . $i ."<br/>";
+  for ($j=1; $j <= 10; $j++) { 
+    $msg .= $i ." x ". $j . " = " . $i * $j . "<br/>";
   }
-}
+  $msg .= "<br/>";
+  }
+
 
 ?>
 
