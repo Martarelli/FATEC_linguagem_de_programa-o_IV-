@@ -1,14 +1,21 @@
 <?php
 $flag_msg = true;
 $msg = "";
-$a = 0;
-$soma = 0;
 
-do {
-  $a++;
-  $soma += $a;
-} while ($a <100);
-  $msg.= "<span> RESULTADO: ".number_format($soma)."</span></br>";
+for ($i=1; $i <= 25 ; $i++) { 
+  if ($i === 1) {
+    $fibAnt = 0;
+    $fibAnt2 = 1;
+    $fibAtu = $fibAnt + $fibAnt2;
+    $msg .= $fibAnt . " " . $fibAtu . " 1";
+  } else {
+    $fibAnt = $fibAnt2;
+    $fibAnt2 = $fibAtu;
+    $fibAtu = $fibAnt + $fibAnt2;
+    $msg .= " ". $fibAtu;
+
+  }
+}
 
 ?>
 
