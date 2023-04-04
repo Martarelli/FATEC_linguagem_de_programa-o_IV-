@@ -1,14 +1,14 @@
 <?php
 $flag_msg = true;
 $msg = "";
-$a = 15;
-while ($a <= 200) {
-  $quad = $a ** 2;
-  $msg.= $a . "² = ";
-  $msg.= "<span>".number_format($quad)."</span></br>";
+$a = 0;
+$soma = 0;
 
+do {
   $a++;
-}
+  $soma += $a;
+} while ($a <100);
+  $msg.= "<span> RESULTADO: ".number_format($soma)."</span></br>";
 
 ?>
 
