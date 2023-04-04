@@ -1,11 +1,12 @@
 <?php
 $flag_msg = true;
 $msg = "";
-$a = 50;
+$a = 15;
 while ($a <= 200) {
   $quad = $a ** 2;
-  $msg. "</br>";
-  $msg. number_format($quad, 2);
+  $msg.= $a . "² = ";
+  $msg.= "<span>".number_format($quad)."</span></br>";
+
   $a++;
 }
 
@@ -23,27 +24,13 @@ while ($a <= 200) {
 </head>
 <body>
 <div class="p-4 mb-4 bg-light">
-  <h1 class="display-5">xibe o quadrado de 50 a 200</h1>
+  <h1 class="display-5">Exibe o quadrado de 15 a 200</h1>
   <hr class="my-3">
-  <p class="lead">Esse exemplo calcula o troco na compra de um produto.</p>
+  <p class="lead">Esse exercicio apresenta os quadrados dos números inteiros de 15 a 200.</p>
 </div>
 
 <div class="container">
-  <form method="GET">
-    <div class="form-group col-md-2">
-      <label for="pagamento">Pagamento:</label>
-      <input type="text" class="form-control" id="pagamento" name="pagamento" required>
-    </div>
-    <br />
-    <div class="form-group col-md-2">
-      <label for="produto">Preço produto:</label>
-      <input type="text" class="form-control" id="produto" name="produto" required>
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary mb-2" name="enviar">Enviar</button>
-    <a href="ex1.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
-  </form>
-  <?php 
+    <?php 
     if (!is_null($flag_msg)) {
       if ($flag_msg) {
         echo "<div class='alert alert-success' role='alert'>$msg</div>"; 
