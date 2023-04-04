@@ -1,16 +1,37 @@
 <?php
 $flag_msg = true;
 $msg = "";
+$numeros = array();
+$qtdPares = 0;
+$qtdPrimos = 0;
+for ($i=0; $i < 50 ; $i++) { 
+  $n = random_int(0,100);
+  array_push($numeros, $n);
+}
 
-for ($i=1; $i <= 100 ; $i++) { 
-  $msg .= "TABUADA DO " . $i ."<br/>";
-  for ($j=1; $j <= 10; $j++) { 
-    $msg .= $i ." x ". $j . " = " . $i * $j . "<br/>";
+sort($numeros);
+
+foreach ($numeros as $key => $value) {
+  $msg .= $value . " ";
+}
+
+foreach ($numeros as $key => $value) {
+  $divisores = 0;
+  for($i=2; $i<$value; $i++){
+    if($n % $i == 0){
+        $divisores++;
+    }
   }
-  $msg .= "<br/>";
+  if($divisores != 0) {
+    $qtdPrimos++;
+  };
+  if ($value % 2 === 0) {
+    $qtdPares++;
   }
+}
 
-
+$msg .= "<br/>Quantidade Números Primos = " . $qtdPrimos;
+$msg .= "<br/>Quantidade Números Pares = " . $qtdPares;
 ?>
 
 <!DOCTYPE html>
