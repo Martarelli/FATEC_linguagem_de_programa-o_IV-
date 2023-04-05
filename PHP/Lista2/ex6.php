@@ -2,36 +2,48 @@
 $flag_msg = true;
 $msg = "";
 $numeros = array();
-$qtdPares = 0;
-$qtdPrimos = 0;
+
 for ($i=0; $i < 50 ; $i++) { 
   $n = random_int(0,100);
   array_push($numeros, $n);
 }
 
-sort($numeros);
+$menor = 0;
+$menorIndex = 0;
+$maior = 0;
+$maiorIndex = 0;
 
+$soma = 0;
 foreach ($numeros as $key => $value) {
-  $msg .= $value . " ";
-}
-
-foreach ($numeros as $key => $value) {
-  $divisores = 0;
-  for($i=2; $i<$value; $i++){
-    if($n % $i == 0){
-        $divisores++;
-    }
+  if($key === 0){
+    $menor = $value;
+    $menorIndex = $key;
+    $maior = $value;
+    $maiorIndex = $key;
   }
-  if($divisores != 0) {
-    $qtdPrimos++;
-  };
-  if ($value % 2 === 0) {
-    $qtdPares++;
-  }
-}
 
-$msg .= "<br/>Quantidade Números Primos = " . $qtdPrimos;
-$msg .= "<br/>Quantidade Números Pares = " . $qtdPares;
+  if($value > $maior){
+    $maiorIndex = $key;
+    $maior = $value;
+  }
+
+  if($value < $menor){
+    $menorIndex = $key;
+    $menor = $value;
+  }
+
+  $soma += $value;
+}
+$media = $soma / count($numeros);
+
+$msg .= "SOMA = " . number_format($soma,0) . "<br/>";
+$msg .= "MEDIA = " . number_format($media,2) . "<br/>";
+$msg .= "MAIOR = " . number_format($maior) . " INDICE DO MAIOR = " . $maiorIndex . "<br/>";
+$msg .= "MENOR = " . number_format($menor) . " INDICE DO MENOR = " . $menorIndex . "<br/>";
+
+
+
+
 ?>
 
 <!DOCTYPE html>
