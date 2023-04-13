@@ -14,9 +14,21 @@ if (isset($_GET['enviar'])) {
   $data = $_GET["data"];
   $hora = $_GET["hora"];
 
-  if (!empty($usurio) && !empty($compromisso) && !empty($local) && !empty($data) && !empty($hora)){
+  if (!empty($usuario) && !empty($compromisso) && !empty($local) && !empty($data) && !empty($hora)){
     $flag_msg = true; // Sucesso 
-   
+    $data = array(
+        "usuario" => $usuario,
+        "compromisso" => $compromisso,
+        "local" => $local,
+        "data" => $data,
+        "hora" => $hora
+    );
+
+    $json = json_encode($data);
+    $file = fopen('compromissos.json','a+');
+    fwrite($file, $json);
+    fclose($file);
+
   }else{  
     $flag_msg = false; //Erro 
     $msg = "Dados incorretos, preencha o formulário corretamente!";
