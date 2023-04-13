@@ -11,11 +11,19 @@ if (isset($_GET['enviar'])) {
   $timeQuatro = $_GET["timeQuatro"];
   $timeCinco = $_GET["timeCinco"];
 
-  if (!empty($timeUm) && !empty($timeDois) && !empty($timeTres) && !empty($timeQuatro) && !empty($timeCinco))
-  {
+  if (!empty($timeUm) && !empty($timeDois) && !empty($timeTres) && !empty($timeQuatro) && !empty($timeCinco)){
     $flag_msg = true; // Sucesso 
-P
-        $msg .= fgets($arquivo)."<br/>";
+    $times = array($timeUm, $timeDois, $timeTres, $timeQuatro, $timeCinco);
+    $arquivo = fopen('times.txt','w');
+    foreach ($times as $t) {
+      $frase = $t . "\n";
+      fwrite($arquivo, $frase);
+    }
+    fclose($arquivo);
+
+    $arquivo = fopen('times.txt','r'); 
+    while (!feof($arquivo)) {
+      $msg .= fgets($arquivo)."<br/>";
     }
     fclose($arquivo);
 
