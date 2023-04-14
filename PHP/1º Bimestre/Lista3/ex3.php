@@ -6,17 +6,18 @@ Os campos solicitados devem ser: usuário, compromisso, local, data e hora. Os c
 $flag_msg = null;
 $msg = "";
 
-if (isset($_GET['enviar'])) {
+if (isset($_POST['enviar'])) {
   
-  $usuario = $_GET["usuario"];
-  $compromisso = $_GET["compromisso"];
-  $local = $_GET["local"];
-  $data = $_GET["data"];
-  $hora = $_GET["hora"];
+  $usuario = $_POST["usuario"];
+  $compromisso = $_POST["compromisso"];
+  $local = $_POST["local"];
+  $data = $_POST["data"];
+  $hora = $_POST["hora"];
 
   if (!empty($usuario) && !empty($compromisso) && !empty($local) && !empty($data) && !empty($hora)){
-    $flag_msg = true; // Sucesso 
-    $data = array(
+    
+    $flag_msg = true;
+    $data_received = array(
         "usuario" => $usuario,
         "compromisso" => $compromisso,
         "local" => $local,
@@ -24,13 +25,29 @@ if (isset($_GET['enviar'])) {
         "hora" => $hora
     );
 
-    $json = json_encode($data);
-    $file = fopen('compromissos.json','a+');
+    $data_received = array($data_received);
+    $data_json = array();
+
+    if (file_exists("./compromissos.json")) {
+      $content = file_get_contents("./compromissos.json");
+      if ($content) {
+          $arrayContent = json_decode($content, true);
+          foreach ($arrayContent as $valor) {
+              array_push($data_json, $valor);
+          }
+      }
+    }
+
+    $data_merge = array_merge($data_received, $data_json);
+    $json = json_encode($data_merge);
+    $file = fopen('compromissos.json','w');
     fwrite($file, $json);
     fclose($file);
 
-  }else{  
-    $flag_msg = false; //Erro 
+    $msg .= "Compromisso adicionado com sucesso...";
+
+  } else {  
+    $flag_msg = false; 
     $msg = "Dados incorretos, preencha o formulário corretamente!";
   }
 }
@@ -54,7 +71,7 @@ if (isset($_GET['enviar'])) {
 </div>
 
 <div class="container">
-  <form method="GET">
+  <form method="POST">
     <div class="form-group col-md-2">
       <label for="usuario">Usuário:</label>
       <input type="text" class="form-control" id="usuario" name="usuario" required>
@@ -84,12 +101,14 @@ if (isset($_GET['enviar'])) {
     <button type="submit" class="btn btn-primary mb-2" name="enviar">Enviar</button>
     <a href="ex3.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Limpar</button></a>
   </form>
+  <a href="ex3-listagem.php"><button type="button" class="btn btn-primary mb-2" name="limpar">Visualizar Compromissos</button></a>
+
   <?php 
     if (!is_null($flag_msg)) {
       if ($flag_msg) {
         echo "<div class='alert alert-success' role='alert'>$msg</div>"; 
       }else{
-        echo "<div class='alert alert-warning' role='alert'>$msg</div>"; 
+        echo "<div class='alert alert-danger' role='alert'>$msg</div>"; 
       }
     }
 ?>
