@@ -2,7 +2,7 @@
 require("header-inc.php");
 
 if(isset($_POST['enviar'])){
-	$nome = $_POST['name'];
+	$nome = $_POST['nome'];
 	$email = $_POST['email'];
 	$datanasc = $_POST['datanasc'];
 
