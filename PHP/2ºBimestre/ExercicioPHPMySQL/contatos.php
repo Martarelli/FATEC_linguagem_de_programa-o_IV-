@@ -1,5 +1,14 @@
 <?php
 require("header-inc.php");
+//CONNECTION TO DATABASE
+require_once('connection.php');
+//CREATE QUERY SQL
+$mysql_query = "SELECT * FROM contatos ORDER BY id";
+//EXECUTE QUERY
+$result = $conn->query($mysql_query);
+//CLOSE CONNECTION TO DATABASE
+mysqli_close($conn);
+
 ?> 
 <div class="container">
   <h2>Contatos</h2>
@@ -19,18 +28,22 @@ require("header-inc.php");
       </tr>
     </thead>
     <tbody>
+      <?php
+      while($data = mysqli_fetch_array($result)) {
+      ?>
       <tr> 
-        <th scope="row" style="text-align:center"></th>
-        <td></td> 
-        <td></td> 
-        <td style="text-align:center"></td>
+        <th scope="row" style="text-align:center"><?= $data['id'] ?></th>
+        <td><?= $data['nome'] ?></td> 
+        <td><?= $data['email'] ?></td> 
+        <td style="text-align:center"><?php echo date('d/m/Y', strtotime($data['datanasc'])); ?></td>
         <td style="text-align:center">
-          <a href="">
+          <a href="update-contato.php?id=<?= $data['id'] ?>">
             <button type="button" class="btn btn-primary">Editar</button></a>
-          <a href="">
+          <a href="delete-contato.php?id=<?= $data['id'] ?>">
             <button type="button" class="btn btn-danger">Excluir</button></a>
         </td> 
-      </tr>    
+      </tr> 
+    <?php } ?>   
     </tbody>
   </table>
 </div>
