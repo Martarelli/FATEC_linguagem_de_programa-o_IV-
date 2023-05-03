@@ -19,10 +19,11 @@ else {
 //CLOSE CONNECTION TO DATABASE
 mysqli_close($conn);
 
-header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
 
 } else {
     $msg = "delete error";
     $msgerror = "ID nao informado";
 }
+
+header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
 ?>
