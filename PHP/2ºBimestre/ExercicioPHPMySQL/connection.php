@@ -14,6 +14,6 @@ if (!$conn) {
     die("Failed to connect to MySQL: " . mysqli_connect_error());
     exit;
 } else {
-    echo "Conexão bem sucedida!!!";
+    //echo "Conexão bem sucedida!!!";
 }
 ?>
