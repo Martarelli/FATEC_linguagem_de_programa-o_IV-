@@ -16,14 +16,14 @@ else {
     $msgerror = $conn->error;
 }
 
-//CLOSE CONNECTION TO DATABASE
-mysqli_close($conn);
 
 
 } else {
     $msg = "delete error";
     $msgerror = "ID nao informado";
 }
+//CLOSE CONNECTION TO DATABASE
+mysqli_close($conn);
 
 header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
 ?>
