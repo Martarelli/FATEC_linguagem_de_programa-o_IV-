@@ -1,5 +1,30 @@
 <?php
+
 require("header-inc.php");	
+
+if (isset($_POST['enviar']))
+{
+	require_once('connection.php');
+	$id = $_POST['id'];
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$datanasc = $_POST['datanasc'];
+
+	$mysql_query = "UPDATE contatos SET nome = '{$nome}', email = {$email}, datanasc = {$datanasc} WHERE id = {$id}";
+
+	if ($conn->query($mysql_query) === TRUE)
+	{
+		$msg = "update success";
+		$msgerror = "";
+	} else {
+		$msg = "update error";
+		$msgerror = $conn->$error;
+	}
+
+	mysqli_close($conn);
+
+	header('Location: contatos.php?msg={$msg}&msgerror={$msgerror}');
+}
 ?>
 <div class="container">
 	<h2>Contatos</h2>
