@@ -27,8 +27,6 @@ if (isset($_POST['enviar']))
 		$msg = "update error";
 		$msgerror = $conn->$error;
 	}
-
-	
 	header('Location: contatos.php?msg={$msg}&msgerror={$msgerror}');
 }
 mysqli_close($conn);
