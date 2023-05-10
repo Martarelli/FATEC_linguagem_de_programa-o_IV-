@@ -24,7 +24,7 @@ if(isset($_POST['enviar'])){
 
 	mysqli_close($conn);
 
-	header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
+	header("Location: compromissos.php?msg={$msg}&msgerror={$msgerror}");
 
 	
 }
