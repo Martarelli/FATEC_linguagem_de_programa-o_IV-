@@ -34,8 +34,8 @@ mysqli_close($conn);
       ?>
       <tr> 
         <th scope="row" style="text-align:center"><?= $data['id'] ?></th>
-        <td><?= $data['descricao'] ?></td> 
-        <td><?php echo date('d/m/Y', strtotime($data['data_inicio'])); ?></td> 
+        <td style="text-align:center"><?= $data['descricao'] ?></td> 
+        <td style="text-align:center"><?php echo date('d/m/Y', strtotime($data['data_inicio'])); ?></td> 
         <td style="text-align:center"><?= $data['duracao']; ?></td>
         <td style="text-align:center"><?= $data['idcontato']; ?></td>
         <td style="text-align:center">
