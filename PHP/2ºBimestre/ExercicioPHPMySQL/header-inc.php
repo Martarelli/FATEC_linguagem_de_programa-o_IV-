@@ -26,6 +26,9 @@ session_start();
             <li class="nav-item">
                 <a class="nav-link" href="contatos.php">Contatos</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="compromissos.php">Compromissos</a>
+            </li>
         </ul>
     </div>
 </nav>
