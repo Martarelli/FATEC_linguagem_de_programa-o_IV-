@@ -1,5 +1,32 @@
 <?php
 require("header-inc.php");
+
+if(empty($_POST['username']) || empty($_POST('password')))
+{
+    $login_err = "Usuário ou senha inválido";
+} else {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT id, username, password FROM users WHERE username = '{$username}'";
+
+    $result = $conn->query($mysql_query);
+
+    if(!$result){
+        $login_err = "Usuário ou senha inválido"; 
+    } else {
+        $data = mysqli_fetch_array($result);
+        if(password_verify($password, $data['password'])){
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['id'] = $data['id'];
+            $_SESSION['username'] = $username;
+            header("Location: dashboard.php");
+        } else {
+            $login_err = "Usuário ou senha incorretos"; 
+        }
+    }
+}
 ?>
 
 <div class="container-sm">
