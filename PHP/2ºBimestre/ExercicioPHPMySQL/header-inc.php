@@ -1,6 +1,9 @@
 <?php
 // Initialize the session
 session_start();
+if(empty($_SESSION)){
+    $_SESSION['loggedin'] = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +33,22 @@ session_start();
                 <a class="nav-link" href="compromissos.php">Compromissos</a>
             </li>
         </ul>
+        <span class="navbar-text">
+            <?php if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
+            { ?>
+                <a href="login.php" class="nav-link">Login</a>
+                <?php } else { ?> 
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo htmlspecialchars($_SESSION['username']);?>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="dashboard.php" class="dropdown-item">Dashboard</a>
+                            <a href="logout.php" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                <?php } ?>
+        </span>
     </div>
 </nav>
 <main>
