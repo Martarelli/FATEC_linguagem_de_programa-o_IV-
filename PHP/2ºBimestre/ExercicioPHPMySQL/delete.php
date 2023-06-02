@@ -30,5 +30,5 @@ if (isset($_GET['id'])) {
     $msgerror =  "O ID não foi informado!";
 }
 
-header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
+header("Location: select.php?msg={$msg}&msgerror={$msgerror}");
 ?>

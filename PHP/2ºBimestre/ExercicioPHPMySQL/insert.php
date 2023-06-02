@@ -36,12 +36,12 @@ if (isset($_POST['enviar'])) {
 	//Connection Close
 	mysqli_close($conn);
 
-	header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
+	header("Location: select.php?msg={$msg}&msgerror={$msgerror}");
 }
 ?>
 
 <div class="container">
-	<h2>Contatos</h2>
+	<h2>Insert</h2>
   	<p>Cadastro de contatos.</p>
   	<hr>  	
 	<div class="wrapper">

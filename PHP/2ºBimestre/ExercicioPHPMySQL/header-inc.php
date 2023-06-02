@@ -1,9 +1,6 @@
 <?php
 // Initialize the session
 session_start();
-if(empty($_SESSION)){
-    $_SESSION['loggedin'] = false;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,37 +14,36 @@ if(empty($_SESSION)){
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">PHP&MySQL</a>
+    <a class="navbar-brand" href="#">PHP&MySQL#</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contatos.php">Contatos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="compromissos.php">Compromissos</a>
-            </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="contatos.php">Contatos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="compromissos.php">Compromissos</a>
+        </li>
         </ul>
         <span class="navbar-text">
-            <?php if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
-            { ?>
-                <a href="login.php" class="nav-link">Login</a>
-                <?php } else { ?> 
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo htmlspecialchars($_SESSION['username']);?>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="dashboard.php" class="dropdown-item">Dashboard</a>
-                            <a href="logout.php" class="dropdown-item">Logout</a>
-                        </div>
+            <?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ ?>
+                <a class="nav-link" href="login.php">Login</a>
+            <?php } else { ?>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo htmlspecialchars($_SESSION["username"]); ?>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="dashboard.php">Dashboard</a>
+                        <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
-                <?php } ?>
+                </div>                
+            <?php } ?>
         </span>
     </div>
 </nav>

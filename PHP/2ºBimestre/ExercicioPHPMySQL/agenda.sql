@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2022 at 01:10 AM
+-- Generation Time: Nov 07, 2022 at 09:37 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `agenda`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `compromissos`
---
-
-CREATE TABLE `compromissos` (
-  `id` int(11) NOT NULL,
-  `descricao` varchar(255) NOT NULL,
-  `data_inicio` date NOT NULL,
-  `duracao` int(11) NOT NULL,
-  `idcontato` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `compromissos`
---
-
-INSERT INTO `compromissos` (`id`, `descricao`, `data_inicio`, `duracao`, `idcontato`, `created_at`) VALUES
-(6, 'Jogo do coringão', '2022-11-13', 90, 1, '2022-11-11 21:05:30'),
-(7, 'Apresentação de seminário', '2022-11-15', 15, 4, '2022-11-11 21:05:30');
 
 -- --------------------------------------------------------
 
@@ -63,8 +40,7 @@ CREATE TABLE `contatos` (
 --
 
 INSERT INTO `contatos` (`id`, `nome`, `email`, `datanasc`, `created_at`) VALUES
-(1, 'Paulo Silva', 'paulo.silva@gmail.com', '1987-07-19', '2022-11-07 15:45:20'),
-(4, 'João da Silva', 'joao@gmail.com', '1970-11-19', '2022-11-11 18:00:57');
+(1, 'Paulo Tacca', 'ptacca@gmail.com', '1968-07-19', '2022-11-07 15:45:20');
 
 -- --------------------------------------------------------
 
@@ -92,13 +68,6 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 --
 
 --
--- Indexes for table `compromissos`
---
-ALTER TABLE `compromissos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_compromisso_contato` (`idcontato`);
-
---
 -- Indexes for table `contatos`
 --
 ALTER TABLE `contatos`
@@ -116,33 +85,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `compromissos`
---
-ALTER TABLE `compromissos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `contatos`
 --
 ALTER TABLE `contatos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `compromissos`
---
-ALTER TABLE `compromissos`
-  ADD CONSTRAINT `fk_compromisso_contato` FOREIGN KEY (`idcontato`) 
-                      REFERENCES `contatos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

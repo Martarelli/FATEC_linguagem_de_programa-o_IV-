@@ -22,12 +22,9 @@ $result = $conn->query($mysql_query);
 mysqli_close($conn);
 ?> 
 <div class="container">
-  <h2>Contatos</h2>
+  <h2>Select</h2>
   <p>Listagem do contatos cadastrados.</p>
-  <hr>
-  <div class="float-right p-1">
-    <a href="insert-contato.php"><button type="button" class="btn btn-primary">Novo</button></a>
-  </div>
+  <hr>  
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr class="table-info" style="text-align:center">
@@ -46,9 +43,9 @@ mysqli_close($conn);
         <td><?php echo $data['email']; ?></td> 
         <td style="text-align:center"><?php echo date('d/m/Y', strtotime($data['datanasc'])); ?></td>
         <td style="text-align:center">
-          <a href="update-contato.php?id=<?php echo $data['id']; ?>">
+          <a href="update.php?id=<?php echo $data['id']; ?>">
             <button type="button" class="btn btn-primary">Editar</button></a>
-          <a href="delete-contato.php?id=<?php echo $data['id']; ?>">
+          <a href="delete.php?id=<?php echo $data['id']; ?>">
             <button type="button" class="btn btn-danger">Excluir</button></a>
         </td> 
       </tr> 

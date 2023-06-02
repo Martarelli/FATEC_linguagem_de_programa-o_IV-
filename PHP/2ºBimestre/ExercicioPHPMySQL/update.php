@@ -31,7 +31,7 @@ if (isset($_POST['enviar'])) {
 		$msg = "update error";
 		$msgerror = $conn->error;
 	}
-	header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
+	header("Location: select.php?msg={$msg}&msgerror={$msgerror}");
 }
 
 if (isset($_GET['id'])) {
@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
 mysqli_close($conn);	
 ?>
 <div class="container">
-	<h2>Contatos</h2>
+	<h2>Update</h2>
   	<p>Atualização do cadastro de contatos.</p>
   	<hr>  	
 	<div class="wrapper">

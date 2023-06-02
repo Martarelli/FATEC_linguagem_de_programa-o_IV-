@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     require_once('connection.php');
 
     // Mysql query to delete record from table
-    $mysql_query = "DELETE FROM contatos WHERE id=$id";
+    $mysql_query = "DELETE FROM compromissos WHERE id=$id";
 
     if ($conn->query($mysql_query) === TRUE) {
         $msg = "delete success";
@@ -30,5 +30,5 @@ if (isset($_GET['id'])) {
     $msgerror =  "O ID não foi informado!";
 }
 
-header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
+header("Location: compromissos.php?msg={$msg}&msgerror={$msgerror}");
 ?>

@@ -1,19 +1,18 @@
 <?php
+/**
+ * Create Database Connection
+ */
 
-//CREATE DATABASE CONNECTION
-define ( 'DB_HOST', 'localhost');
-define ( 'DB_USER', 'root');
-define ( 'DB_PASSWORD', '');
-define ( 'DB_NAME', 'agenda');
+define ( 'DB_HOST', 'localhost' );
+define ( 'DB_USER', 'root' );
+define ( 'DB_PASSWORD', '' );
+define ( 'DB_NAME', 'agenda' );
 
-//CREATE CONNECTION USING MYSQLI_CONNECT()
+// Create connection using mysqli_connect()
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
-//IF $conn IS FALSE, CONNECTION IS FAILED
-if (!$conn) {
-    die("Failed to connect to MySQL: " . mysqli_connect_error());
-    exit;
-} else {
-    //echo "Conexão bem sucedida!!!";
+// If $conn is false, connection is failed
+if (!$conn ) {
+  die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
 ?>

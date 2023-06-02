@@ -1,12 +1,19 @@
 <?php
 require("header-inc.php");
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 ?>
 
 <div class="container">
   <h2>Dashboard</h2>
-  <p>Olá, <b>...</b>. Benvindo ao nosso site.</h1>
+  <p>Olá, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Benvindo ao nosso site.</h1>
   <hr>  
-  <p>Mensagem de alteção do dashboard.</p>
+  <p>&nbsp;</p>
+  <p>As alterações foram inseridas aqui!!!</p>
   <p>
     <a href="reset-password.php" class="btn btn-warning">Resete a sua senha</a>
     <a href="logout.php" class="btn btn-danger ml-3">Faça logout em sua conta</a>
